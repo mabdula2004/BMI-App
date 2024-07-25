@@ -4,7 +4,10 @@ import 'RepaeatContainer.dart';
 
 const activeColor = Color(0xFF1D1E33);
 const dactiveColor = Color(0xFF111328);
-
+enum Gender{
+  male,
+  female,
+}
 class Input extends StatefulWidget {
   const Input({super.key});
 
@@ -15,13 +18,13 @@ class Input extends StatefulWidget {
 class _InputState extends State<Input> {
   Color maleColor = dactiveColor;
   Color femaleColor = dactiveColor;
-  void updatecolor(int gender){
-    if(gender==1)
+  void updatecolor(Gender gendertype){
+    if(gendertype==Gender.male)
       {
         maleColor = activeColor;
         femaleColor = dactiveColor;
       }
-    if(gender==2)
+    if(gendertype==Gender.female)
       {
         maleColor = dactiveColor;
         femaleColor = activeColor;
@@ -43,7 +46,7 @@ class _InputState extends State<Input> {
                     child:GestureDetector(
                       onTap: () {
                         setState(() {
-                          updatecolor(1);
+                          updatecolor(Gender.male);
                         });
                       },
                     child: RepaeatContainer(
@@ -56,7 +59,7 @@ class _InputState extends State<Input> {
                   child:GestureDetector(
                   onTap: () {
                   setState(() {
-                  updatecolor(2);
+                  updatecolor(Gender.female);
                   });
                   },
                     child: RepaeatContainer(
