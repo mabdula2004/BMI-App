@@ -1,9 +1,9 @@
+import 'package:bmi_app/ConstantFile.dart';
 import 'package:flutter/material.dart';
 import 'columnWidget.dart';
 import 'RepeatContainer.dart';
 
-const activeColor = Color(0xFF1D1E33);
-const dactiveColor = Color(0xFF111328);
+
 
 enum Gender {
   male,
@@ -59,6 +59,11 @@ class _InputState extends State<Input> {
           Expanded(
             child: RepeatContainer(
               color: Color(0xFF1D1E33),
+              cardWidget: Column(
+                children: [
+                  Text('Height', style:KLabelStyle,),
+                ],
+              ),
             ),
           ),
           Expanded(

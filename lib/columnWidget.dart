@@ -1,3 +1,4 @@
+import 'package:bmi_app/ConstantFile.dart';
 import 'package:flutter/material.dart';
 class columnWidget extends StatelessWidget {
   final String txt;
@@ -15,10 +16,9 @@ class columnWidget extends StatelessWidget {
         ),
         SizedBox(height: 10,),
         Text(txt,
-          style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold
-          ),)],
+          style: KLabelStyle,
+        ),
+      ],
     );
   }
 }
