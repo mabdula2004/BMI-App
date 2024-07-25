@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'columnWidget.dart';
 import 'RepaeatContainer.dart';
 
+const activeColor = Color(0xFF1D1E33);
+const dactiveColor = Color(0xFF111328);
+
 class Input extends StatefulWidget {
   const Input({super.key});
 
@@ -10,6 +13,21 @@ class Input extends StatefulWidget {
 }
 
 class _InputState extends State<Input> {
+  Color maleColor = dactiveColor;
+  Color femaleColor = dactiveColor;
+  void updatecolor(int gender){
+    if(gender==1)
+      {
+        maleColor = activeColor;
+        femaleColor = dactiveColor;
+      }
+    if(gender==2)
+      {
+        maleColor = dactiveColor;
+        femaleColor = activeColor;
+      }
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,17 +40,31 @@ class _InputState extends State<Input> {
               child: Row(
                 children: [
                   Expanded(
+                    child:GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          updatecolor(1);
+                        });
+                      },
                     child: RepaeatContainer(
-                      color: Color(0xFF1D1E33),
+                      color:  maleColor,
                       cardWidget:  columnWidget(ico: Icons.male, txt: 'MALE',),
                     ),
                   ),
+                  ),
                   Expanded(
+                  child:GestureDetector(
+                  onTap: () {
+                  setState(() {
+                  updatecolor(2);
+                  });
+                  },
                     child: RepaeatContainer(
-                      color: Color(0xFF1D1E33),
+                      color: femaleColor,
                       cardWidget:  columnWidget(ico: Icons.female,txt: "FEMALE",),
                     ),
 
+                  ),
                   ),
                 ],
               ),
