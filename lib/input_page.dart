@@ -1,125 +1,68 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'columnWidget.dart';
+import 'RepaeatContainer.dart';
 
-class InputPage extends StatefulWidget {
+class Input extends StatefulWidget {
+  const Input({super.key});
+
   @override
-  _InputPageState createState() => _InputPageState();
+  State<Input> createState() => _InputState();
 }
 
-class _InputPageState extends State<InputPage> {
+class _InputState extends State<Input> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
-      ),
-      body:  Column(
-    children: [
-    Expanded(
-    child: Row(
-        children: [
-        Expanded(
-            child: new RepeatContainerCode(Color(0xFF1D1E33),
-                RepeatTextICONeWidget(
-                  FontAwesomeIcons.male,
-                  "MALE",
-                ),
-            ),
-    ),
-    Expanded(
-      child: new RepeatContainerCode(Color(0xFF1D1E33),
-    RepeatTextICONeWidget(
-     FontAwesomeIcons.female,
-     "FEMALE",
-      ),
-     ),
-    ),
-    ],
-    ),
-    ),
-    Expanded(
-      child: new RepeatContainerCode(Color(0xFF1D1E33),
-        RepeatTextICONeWidget(
-          FontAwesomeIcons.male,
-          "MALE",
+        appBar: AppBar(
+          title: Text('BMI Calculator'),
         ),
-      ),
-    ),
-    Expanded(
-    child: Row(
-    children: [
-    Expanded(
-      child: new RepeatContainerCode(Color(0xFF1D1E33),
-        RepeatTextICONeWidget(
-          FontAwesomeIcons.male,
-          "MALE",
-        ),
-      ),
-      ),
-    Expanded(
-      child: new RepeatContainerCode(Color(0xFF1D1E33),
-        RepeatTextICONeWidget(
-          FontAwesomeIcons.male,
-          "MALE",
-        ),
-      ),
+        body: Column(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: RepaeatContainer(
+                      color: Color(0xFF1D1E33),
+                      cardWidget:  columnWidget(ico: Icons.male, txt: 'MALE',),
+                    ),
+                  ),
+                  Expanded(
+                    child: RepaeatContainer(
+                      color: Color(0xFF1D1E33),
+                      cardWidget:  columnWidget(ico: Icons.female,txt: "FEMALE",),
+                    ),
+
+                  ),
+                ],
               ),
-           ],
-         ),
-        ),
-       ],
-      ),
+            ),
+
+            Expanded(
+                child: new RepaeatContainer(
+                  color: Color(0xFF1D1E33),
+                )
+            ),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                      child: new RepaeatContainer(
+                        color: Color(0xFF1D1E33),
+                      )
+                  ),
+                  Expanded(
+                      child:new RepaeatContainer(color: Color(0xFF1D1E33))
+                  ),
+
+
+                ],
+              ),),
+          ],
+        )
     );
   }
 }
 
 
-class RepeatTextICONeWidget extends StatelessWidget {
-  RepeatTextICONeWidget(this.iconData,this.label);
-  final IconData iconData;
-  final String label;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Icon(
-          iconData,
-          size: 85.0,
-        ), // Icon
-        SizedBox(
-          height: 15.0, // Corrected height
-        ),
-        Text(
-          label,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18.0,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-
-class RepeatContainerCode extends StatelessWidget {
-
-  RepeatContainerCode(this.colors, this.cardWidget);
-  final Color colors;
-  final Widget cardWidget;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardWidget,
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: colors,
-        borderRadius: BorderRadius.circular(10.0),
-      ), // BoxDecoration
-    ); // Container
-  }
-}
 
