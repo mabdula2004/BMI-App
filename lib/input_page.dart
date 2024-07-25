@@ -16,21 +16,7 @@ class Input extends StatefulWidget {
 }
 
 class _InputState extends State<Input> {
-  Color maleColor = dactiveColor;
-  Color femaleColor = dactiveColor;
-  void updatecolor(Gender gendertype){
-    if(gendertype==Gender.male)
-      {
-        maleColor = activeColor;
-        femaleColor = dactiveColor;
-      }
-    if(gendertype==Gender.female)
-      {
-        maleColor = dactiveColor;
-        femaleColor = activeColor;
-      }
-
-  }
+   Gender? selectGender;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +32,11 @@ class _InputState extends State<Input> {
                     child:GestureDetector(
                       onTap: () {
                         setState(() {
-                          updatecolor(Gender.male);
+                          selectGender=Gender.male;
                         });
                       },
                     child: RepaeatContainer(
-                      color:  maleColor,
+                      color:  selectGender==Gender.male?activeColor :dactiveColor,
                       cardWidget:  columnWidget(ico: Icons.male, txt: 'MALE',),
                     ),
                   ),
@@ -59,11 +45,11 @@ class _InputState extends State<Input> {
                   child:GestureDetector(
                   onTap: () {
                   setState(() {
-                  updatecolor(Gender.female);
+                  selectGender=Gender.female;
                   });
                   },
                     child: RepaeatContainer(
-                      color: femaleColor,
+                      color:  selectGender==Gender.female?activeColor :dactiveColor,
                       cardWidget:  columnWidget(ico: Icons.female,txt: "FEMALE",),
                     ),
 
