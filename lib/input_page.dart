@@ -20,7 +20,7 @@ class Input extends StatefulWidget {
 class _InputState extends State<Input> {
   Gender? selectGender;
   int SliderHeight=180;
-  
+  int SliderWeight=60;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,11 +98,39 @@ class _InputState extends State<Input> {
                 Expanded(
                   child: RepeatContainer(
                     color: Color(0xFF1D1E33),
+                    cardWidget: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('WEIGHT',
+                        style: KLabelStyle,),
+                         Text(
+                            SliderWeight.toString(),
+                          style: KNumberstyle,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: RepeatContainer(
                     color: Color(0xFF1D1E33),
+                    cardWidget: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('AGE',
+                        style: KLabelStyle,),
+                        Text(
+                          SliderWeight.toString(),
+                          style: KNumberstyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
