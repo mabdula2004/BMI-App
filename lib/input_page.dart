@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'columnWidget.dart';
 import 'RepeatContainer.dart';
-
+import 'ResultScreen.dart';
 
 
 enum Gender {
@@ -175,11 +175,21 @@ class _InputState extends State<Input> {
               ],
             ),
           ),
-          Container(
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultScreen()));
+            },
+          child: Container(
+            child:const Center(
+            child: Text('CALCULATE',
+            style: KLargeButtonstyle
+             ),
+            ),
             color: Color(0xFFEB1555),
             margin: EdgeInsets.only(top:10.0),
             width: double.infinity,
             height: 80.0,
+          ),
           ),
         ],
       ),
