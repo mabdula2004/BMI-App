@@ -1,5 +1,7 @@
 import 'package:bmi_app/ConstantFile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'columnWidget.dart';
 import 'RepeatContainer.dart';
 
@@ -21,6 +23,7 @@ class _InputState extends State<Input> {
   Gender? selectGender;
   int SliderHeight=180;
   int SliderWeight=60;
+  int SliderAge=20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,6 +110,27 @@ class _InputState extends State<Input> {
                             SliderWeight.toString(),
                           style: KNumberstyle,
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIcon(
+                              iconData:FontAwesomeIcons.minus,
+                              onPress: (){
+                                setState(() {
+                                  SliderWeight--;
+                                });
+                              },
+                            ),
+                            SizedBox(width: 10.0,),
+                            RoundIcon(iconData:FontAwesomeIcons.plus,
+                              onPress: (){
+                                setState(() {
+                                  SliderWeight++;
+                                });
+                              },
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -120,13 +144,28 @@ class _InputState extends State<Input> {
                         Text('AGE',
                         style: KLabelStyle,),
                         Text(
-                          SliderWeight.toString(),
+                          SliderAge.toString(),
                           style: KNumberstyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-
+                             RoundIcon(
+                               iconData:FontAwesomeIcons.minus,
+                               onPress: (){
+                                 setState(() {
+                                   SliderAge--;
+                                 });
+                               },
+                             ),
+                            SizedBox(width: 10.0,),
+                            RoundIcon(iconData:FontAwesomeIcons.plus,
+                              onPress: (){
+                                setState(() {
+                                  SliderAge++;
+                                });
+                              },
+                             ),
                           ],
                         )
                       ],
@@ -136,11 +175,50 @@ class _InputState extends State<Input> {
               ],
             ),
           ),
+          Container(
+            color: Color(0xFFEB1555),
+            margin: EdgeInsets.only(top:10.0),
+            width: double.infinity,
+            height: 80.0,
+          ),
         ],
       ),
     );
   }
 }
+
+
+
+
+
+class RoundIcon extends StatelessWidget {
+  RoundIcon({required this.iconData, this.onPress});
+
+  final IconData? iconData;
+  final VoidCallback? onPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(iconData),
+      onPressed: onPress,
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(
+        height: 56.0,
+        width: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xff4C4F5E ),
+
+    );
+  }
+}
+
+
+
+
+
+
 
 
 
